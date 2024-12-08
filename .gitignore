@@ -1,6 +1,7 @@
 .cache
 .idea
 .vscode
+.session
 
 build*
 cmake-build-debug
