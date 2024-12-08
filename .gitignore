@@ -1,0 +1,11 @@
+.cache
+.idea
+.vscode
+
+build*
+cmake-build-debug
+cmake-build-release
+
+inputs/*
+src/inputs.h
+src/SolverFactory.h

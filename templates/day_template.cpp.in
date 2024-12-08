@@ -1,0 +1,11 @@
+#include "day@DAY@.h"
+
+#include <iostream>
+
+namespace adventofcode
+{
+    long Day@DAY@::solve(Part part, bool is_test) {
+        return 0;
+    }
+
+}
