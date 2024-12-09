@@ -42,7 +42,7 @@ endforeach()
 
 configure_file(
         ${CMAKE_SOURCE_DIR}/templates/SolverFactory.h.in
-        ${CMAKE_SOURCE_DIR}/cli/SolverFactory.h
+        ${CMAKE_SOURCE_DIR}/src/cli/SolverFactory.h
         @ONLY
 )
 ### END DAY SOLVERS ###

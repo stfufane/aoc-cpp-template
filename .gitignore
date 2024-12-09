@@ -9,4 +9,4 @@ cmake-build-release
 
 inputs/*
 src/inputs.h
-src/SolverFactory.h
+src/cli/SolverFactory.h
