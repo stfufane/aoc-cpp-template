@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 
-namespace adventofcode::args_parser {
+namespace adventofcode::cli::args_parser {
 
 inline std::string_view get_option(const std::vector<std::string_view>& args, std::string_view option_name) {
   for (auto it = args.begin(), end = args.end(); it != end; ++it) {

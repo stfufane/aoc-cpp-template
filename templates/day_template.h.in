@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../src/DaySolver.h"
+#include "../DaySolver.h"
 
 namespace adventofcode
 {
     class Day@DAY@ : public DaySolver {
     public:
-        Day@DAY@() : DaySolver(@DAY@) {}
+        Day@DAY@();
         ~Day@DAY@() override = default;
 
-        long solve(Part part, bool is_test) override;
+        long solve(Part part) override;
     };
 }
