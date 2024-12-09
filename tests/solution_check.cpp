@@ -1,6 +1,6 @@
 #include "DaySolver.h"
 #include "cli/ArgsParser.h"
-#include "SolverFactory.h"
+#include "cli/SolverFactory.h"
 #include "cli/Utils.h"
 #include <gtest/gtest.h>
 #include <numeric>

@@ -52,12 +52,14 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${CMAKE_SOURCE_DI
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/problems)
 
 # Create a library containing all the problems
+set(PROBLEMS_LIB problems)
 file (GLOB PROBLEMS "${CMAKE_SOURCE_DIR}/src/problems/*")
-add_library(problems STATIC ${PROBLEMS})
+add_library(${PROBLEMS_LIB} STATIC ${PROBLEMS})
+set_target_properties(${PROBLEMS_LIB} PROPERTIES LINKER_LANGUAGE CXX)
 
 # Generate the final executable
 add_executable(${PROJECT_NAME} src/main.cpp)
-target_link_libraries(${PROJECT_NAME} problems)
+target_link_libraries(${PROJECT_NAME} ${PROBLEMS_LIB})
 
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 

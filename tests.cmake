@@ -16,7 +16,7 @@ add_executable(solution_check
 target_link_libraries(solution_check
   PRIVATE
   GTest::gtest_main
-  problems
+  ${PROBLEMS_LIB}
 )
 
 target_include_directories(solution_check
