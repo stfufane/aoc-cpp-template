@@ -9,16 +9,16 @@ set(CMAKE_CXX_STANDARD 20)
 ### INPUTS ###
 ### Handle inputs as string_views and auto generate inputs.h
 set(INPUTS_CONTENT "")
-string(APPEND INPUTS_CONTENT "inline constexpr std::array<std::string_view, 25> inputs = {\n")
 foreach(DAY_NUMBER RANGE 1 25)
         if (EXISTS "${CMAKE_SOURCE_DIR}/inputs/day${DAY_NUMBER}.txt")
                 file(READ "${CMAKE_SOURCE_DIR}/inputs/day${DAY_NUMBER}.txt" INPUT_CONTENT)
-                string(APPEND INPUTS_CONTENT "R\"(${INPUT_CONTENT})\",\n")
+                # Remove the line break at the end of the file or the split_view will return one extra line
+                string(REGEX REPLACE "\n$" "" TRIMMED_INPUT_CONTENT "${INPUT_CONTENT}")
+                string(APPEND INPUTS_CONTENT "R\"(${TRIMMED_INPUT_CONTENT})\",\n")
         else()
                 string(APPEND INPUTS_CONTENT "R\"()\",\n")
         endif()
 endforeach()
-string(APPEND INPUTS_CONTENT "};\n")
 
 configure_file(
         ${CMAKE_SOURCE_DIR}/templates/inputs.h.in
