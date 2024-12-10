@@ -35,13 +35,33 @@ This will take care of reading your input for the day, put it in a text file, an
 
 The source files are put in the `src/problems` directory, and the input files in the `inputs` directory. You can access the input from the class using the `input_data` member.
 
+```c++
+#include "day1.h"
+
+namespace adventofcode
+{
+    Day1::Day1() : DaySolver(1) {
+        // Data for tests
+        test_data = R"()";
+        test_results = { 0, 0 };
+    }
+
+    long Day1::solve(Part part) {
+        return 0;
+    }
+
+}
+```
+
 Just fill out the `solve` method of the day class, it should return a value for each part of the day.
 
 You can also fill the constructor of the day class with the test data and the expected results for each part. It will be used by unit tests to validate your solution.
 
-Any change to the file structure will be picked up by CMake and retrigger a configure so everything is up to date.
+Any change to the file structure will be picked up by CMake and re-trigger a configure so everything is up to date.
 
 ### Build
+
+_You'll first need to generate the first day_
 
 To build the project, run the following commands:
 
