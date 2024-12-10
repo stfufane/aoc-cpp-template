@@ -1,22 +1,21 @@
 #pragma once
 
+#include <algorithm>
 #include <string_view>
 #include <vector>
-#include <algorithm>
 
-namespace adventofcode::cli::args_parser {
+namespace adventofcode::cli::args_parser
+{
 
 inline std::string_view get_option(const std::vector<std::string_view>& args, std::string_view option_name) {
-  for (auto it = args.begin(), end = args.end(); it != end; ++it) {
-    if (*it == option_name)
-      if (it + 1 != end)
+    if (const auto it = std::ranges::find(args, option_name); it + 1 != args.end()) {
         return *(it + 1);
-  }
-  return "";
+    }
+    return "";
 }
 
 inline bool has_option(const std::vector<std::string_view>& args, std::string_view option_name) {
-    return std::find(args.begin(), args.end(), option_name) != args.end();
+    return std::ranges::find(args, option_name) != args.end();
 }
 
-} // namespace adventofcode::args_parser
+} // namespace adventofcode::cli::args_parser
