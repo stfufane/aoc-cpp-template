@@ -71,7 +71,7 @@ inline std::string getTestFilter(const std::vector<std::string_view>& args) {
 }
 
 inline void solveDay(int day, std::optional<Part> part) {
-    auto solver = createSolver(day);
+    const auto solver = createSolver(day);
     if (!solver) {
         std::cerr << "No solver found for day " << day << "\n";
         return;
@@ -79,8 +79,8 @@ inline void solveDay(int day, std::optional<Part> part) {
 
     auto solve_part = [&](Part p) {
         std::cout << "- Part " << (p == Part::Part1 ? "1" : "2") << "\n";
-        auto result = solver->timed_solve(p);
-        std::cout << "  -> Result: " << result.result << " (in " << result.duration << " µs)\n";
+        const auto [result, duration] = solver->timed_solve(p);
+        std::cout << "  -> Result: " << result << " (in " << duration << " µs)\n";
     };
 
     std::cout << "# Day " << day << " running...\n";

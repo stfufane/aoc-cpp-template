@@ -16,7 +16,7 @@ TEST_P(DaySolverTest, Part1) {
     day_solver = adventofcode::createSolver(GetParam());
     ASSERT_NE(day_solver, nullptr);
     day_solver->setup_test();
-    const auto result = day_solver->solve(adventofcode::Part::Part1);
+    const auto result = day_solver->solvePart1();
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part1));
 }
 
@@ -25,7 +25,7 @@ TEST_P(DaySolverTest, Part2) {
     day_solver = adventofcode::createSolver(GetParam());
     ASSERT_NE(day_solver, nullptr);
     day_solver->setup_test();
-    const auto result = day_solver->solve(adventofcode::Part::Part2);
+    const auto result = day_solver->solvePart2();
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part2));
 }
 

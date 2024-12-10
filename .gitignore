@@ -3,6 +3,7 @@
 .vscode
 .session
 *.DS_Store
+compile_commands.json
 
 build*
 cmake-build-debug

@@ -23,11 +23,12 @@ public:
     explicit DaySolver(int inDay) : input_data(inputs[inDay - 1]) {}
     virtual ~DaySolver() = default;
 
-    virtual long solve(Part part) = 0;
+    virtual long solvePart1() = 0;
+    virtual long solvePart2() = 0;
 
     DayResult timed_solve(Part part) {
         const auto start = std::chrono::high_resolution_clock::now();
-        const auto result = solve(part);
+        const auto result = part == Part::Part1 ? solvePart1() : solvePart2();
         const auto end = std::chrono::high_resolution_clock::now();
         return { result, std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() };
     }

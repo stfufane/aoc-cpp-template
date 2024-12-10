@@ -4,11 +4,12 @@
 
 namespace adventofcode
 {
-    class Day@DAY@ : public DaySolver {
+    class Day@DAY@ final : public DaySolver {
     public:
         Day@DAY@();
         ~Day@DAY@() override = default;
 
-        long solve(Part part) override;
+        long solvePart1() override;
+        long solvePart2() override;
     };
 }
