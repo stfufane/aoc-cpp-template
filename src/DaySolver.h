@@ -2,7 +2,6 @@
 
 #include "inputs.h"
 #include <chrono>
-#include <iostream>
 #include <string_view>
 
 namespace adventofcode
@@ -20,7 +19,7 @@ class DaySolver
 {
 public:
     DaySolver() = delete;
-    explicit DaySolver(int inDay) : input_data(inputs[inDay - 1]) {}
+    explicit DaySolver(size_t inDay) : input_data(inputs[inDay - 1]) {}
     virtual ~DaySolver() = default;
 
     virtual long solvePart1() = 0;
