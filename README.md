@@ -55,7 +55,7 @@ namespace adventofcode
 
 Just fill out the `solve` method of the day class, it should return a value for each part of the day.
 
-You can also fill the constructor of the day class with the test data and the expected results for each part. It will be used by unit tests to validate your solution.
+You can also fill the constructor of the day class with the test data and the expected results for each part. It will be used by unit tests to validate your solution. An optional member test_data2 is available for the second part of the day if required.
 
 Any change to the file structure will be picked up by CMake and re-trigger a configure so everything is up to date.
 

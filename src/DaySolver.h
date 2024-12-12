@@ -33,7 +33,12 @@ public:
         return { result, std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() };
     }
 
-    void setup_test() { input_data = test_data; }
+    void setup_test(Part part) { 
+        input_data = test_data;
+        if (part == Part::Part2 && test_data2) {
+            input_data = *test_data2;
+        }
+    }
 
     [[nodiscard]] long get_test_result(Part part) const { return test_results[static_cast<size_t>(part)]; }
 
@@ -41,6 +46,7 @@ protected:
     std::string_view input_data;
 
     std::string test_data;
+    std::optional<std::string> test_data2;
     std::array<long, 2> test_results {};
 };
 } // namespace adventofcode

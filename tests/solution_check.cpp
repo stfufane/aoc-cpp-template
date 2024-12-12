@@ -15,7 +15,7 @@ TEST_P(DaySolverTest, Part1) {
     std::cout << "Day " << GetParam() << ", part 1 running...\n";
     day_solver = adventofcode::createSolver(GetParam());
     ASSERT_NE(day_solver, nullptr);
-    day_solver->setup_test();
+    day_solver->setup_test(adventofcode::Part::Part1);
     const auto result = day_solver->solvePart1();
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part1));
 }
@@ -24,7 +24,7 @@ TEST_P(DaySolverTest, Part2) {
     std::cout << "Day " << GetParam() << ", part 2 running...\n";
     day_solver = adventofcode::createSolver(GetParam());
     ASSERT_NE(day_solver, nullptr);
-    day_solver->setup_test();
+    day_solver->setup_test(adventofcode::Part::Part2);
     const auto result = day_solver->solvePart2();
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part2));
 }
