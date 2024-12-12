@@ -5,6 +5,13 @@ project(adventofcode
         LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
+if(MSVC)
+        add_compile_options("/W4" "$<$<CONFIG:RELEASE>:/O2>")
+else()
+        set(CMAKE_CXX_FLAGS "-Wshadow -Wall -Wextra -Wfatal-errors -Wconversion -Wpedantic")
+        set(CMAKE_CXX_FLAGS_DEBUG "-g")
+        set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif()
 
 ### INPUTS ###
 ### Handle inputs as string_views and auto generate inputs.h
