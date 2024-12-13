@@ -10,8 +10,8 @@ Unit tests are already setup for the 25 days of the advent calendar, and can be 
 
 ## Requirements
 
-- CMake > 3.20
-- C++20 compiler
+- CMake
+- C++17 compiler
 
 ## Usage
 
@@ -46,14 +46,17 @@ namespace adventofcode
         test_results = { 0, 0 };
     }
 
-    long Day1::solve(Part part) {
+    long Day1::solvePart1() {
         return 0;
     }
 
+    long Day1::solvePart2() {
+        return 0;
+    }
 }
 ```
 
-Just fill out the `solve` method of the day class, it should return a value for each part of the day.
+Just fill out the `solvePartN` methods of the day class, they should return the result for each part of the day.
 
 You can also fill the constructor of the day class with the test data and the expected results for each part. It will be used by unit tests to validate your solution. An optional member test_data2 is available for the second part of the day if required.
 
