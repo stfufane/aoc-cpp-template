@@ -15,9 +15,9 @@ set(OUTPUT_CPP_FILE "${CMAKE_SOURCE_DIR}/src/problems/day${DAY}.cpp")
 if (EXISTS ${OUTPUT_H_FILE} OR EXISTS ${OUTPUT_CPP_FILE})
     message(STATUS "This day source has already been generated")
 else()
-    message(STATUS "Generating source files for day ${DAY}")
     configure_file(${TEMPLATE_H_FILE} ${OUTPUT_H_FILE} @ONLY)
     configure_file(${TEMPLATE_CPP_FILE} ${OUTPUT_CPP_FILE} @ONLY)
+    message(STATUS "Generated ${OUTPUT_H_FILE} and ${OUTPUT_CPP_FILE} for day ${DAY}")
 endif()
 
 # Download the input file from the AoC website
@@ -34,5 +34,4 @@ if (NOT DOWNLOAD_RESULT EQUAL 0)
     message(FATAL_ERROR "Failed to download file from ${INPUT_URL}")
 endif()
 
-message(STATUS "Generated ${OUTPUT_H_FILE} and ${OUTPUT_CPP_FILE} for day ${DAY}")
 message(STATUS "Downloaded input from ${INPUT_URL} to ${OUTPUT_FILE}")
