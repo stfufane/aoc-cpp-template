@@ -8,11 +8,11 @@ Day@DAY@::Day@DAY@() : DaySolver(@DAY@) {
     test_results = { 0, 0 };
 }
 
-long Day@DAY@::solvePart1() {
+ResultType Day@DAY@::solvePart1() {
     return 0;
 }
 
-long Day@DAY@::solvePart2() {
+ResultType Day@DAY@::solvePart2() {
     return 0;
 }
 
