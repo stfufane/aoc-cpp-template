@@ -6,6 +6,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include "Result.h"
 
 namespace adventofcode::cli::utils
 {
@@ -80,7 +81,7 @@ inline void solveDay(int day, std::optional<Part> part) {
     auto solve_part = [&](Part p) {
         std::cout << "- Part " << (p == Part::Part1 ? "1" : "2") << "\n";
         const auto [result, duration] = solver->timed_solve(p);
-        std::cout << "  -> Result: " << result << " (in " << duration << " µs)\n";
+        std::cout << "  -> Result: " << streamer{result} << " (in " << duration << " µs)\n";
     };
 
     std::cout << "# Day " << day << " running...\n";
