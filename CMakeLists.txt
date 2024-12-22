@@ -4,7 +4,7 @@ project(adventofcode
         DESCRIPTION "Advent of Code 2024"
         LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 if(MSVC)
         add_compile_options("/W4" "$<$<CONFIG:RELEASE>:/O2>")
 else()
@@ -37,14 +37,17 @@ configure_file(
 ### DAY SOLVERS ###
 ### Append the day solvers to the factory
 file(GLOB DAY_SOLVERS "${CMAKE_SOURCE_DIR}/src/problems/day*.h")
+list(LENGTH DAY_SOLVERS NB_DAYS)
 set(CASES "")
 set(INCLUDES "")
+set(AVAILABLE_DAYS "")
 
 foreach(DAY_SOLVER ${DAY_SOLVERS})
         get_filename_component(DAY ${DAY_SOLVER} NAME_WE)
         string(SUBSTRING ${DAY} 3 -1 DAY_NUMBER)
         string(APPEND INCLUDES "#include \"problems/${DAY}.h\"\n")
         string(APPEND CASES "        case ${DAY_NUMBER}: return std::make_unique<Day${DAY_NUMBER}>();\n")
+        string(APPEND AVAILABLE_DAYS "${DAY_NUMBER}, ")
 endforeach()
 
 configure_file(

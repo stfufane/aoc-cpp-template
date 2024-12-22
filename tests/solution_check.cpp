@@ -3,7 +3,6 @@
 #include "cli/SolverFactory.h"
 #include "cli/Utils.h"
 #include <gtest/gtest.h>
-#include <numeric>
 
 class DaySolverTest : public ::testing::TestWithParam<int>
 {
@@ -29,11 +28,8 @@ TEST_P(DaySolverTest, Part2) {
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part2));
 }
 
-INSTANTIATE_TEST_SUITE_P(solution_check, DaySolverTest, ::testing::ValuesIn([] {
-                             std::array<int, 25> all_days {};
-                             std::iota(all_days.begin(), all_days.end(), 1);
-                             return all_days;
-                         }()));
+// Generate the tests only for the available days.
+INSTANTIATE_TEST_SUITE_P(solution_check, DaySolverTest, ::testing::ValuesIn(adventofcode::available_days));
 
 inline void printUsage() { std::cout << "Usage: ./solution_check [--day <number>] [--alldays] [--part 1|2] [--help]\n"; }
 

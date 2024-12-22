@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <string_view>
 #include <vector>
-#include <ranges>
 
 namespace adventofcode::cli::args_parser
 {

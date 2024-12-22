@@ -2,6 +2,7 @@
 
 #include "ArgsParser.h"
 #include "SolverFactory.h"
+#include <algorithm>
 #include <iostream>
 #include <optional>
 #include <string>
@@ -72,14 +73,14 @@ inline std::string getTestFilter(const std::vector<std::string_view>& args) {
 }
 
 inline void solveDay(int day, std::optional<Part> part) {
-    const auto solver = createSolver(day);
-    if (!solver) {
+    if (!std::ranges::contains(available_days, day)) {
         std::cerr << "No solver found for day " << day << "\n";
         return;
     }
 
     auto solve_part = [&](Part p) {
         std::cout << "- Part " << (p == Part::Part1 ? "1" : "2") << "\n";
+        const auto solver = createSolver(day);
         const auto [result, duration] = solver->timed_solve(p);
         std::cout << "  -> Result: " << streamer{result} << " (in " << duration << " µs)\n";
     };
