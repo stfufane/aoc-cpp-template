@@ -28,7 +28,6 @@ TEST_P(DaySolverTest, Part2) {
     ASSERT_EQ(result, day_solver->get_test_result(adventofcode::Part::Part2));
 }
 
-// Generate the tests only for the available days.
 INSTANTIATE_TEST_SUITE_P(solution_check, DaySolverTest, ::testing::ValuesIn(adventofcode::available_days));
 
 inline void printUsage() { std::cout << "Usage: ./solution_check [--day <number>] [--alldays] [--part 1|2] [--help]\n"; }
@@ -50,6 +49,10 @@ int main(int argc, char** argv) {
         return RUN_ALL_TESTS();
     }
 
-    ::testing::GTEST_FLAG(filter) = cli::utils::getTestFilter(args);
-    return RUN_ALL_TESTS();
+    if (auto test_filter = cli::utils::getTestFilter(args); test_filter.has_value()) {
+        ::testing::GTEST_FLAG(filter) = *test_filter;
+        return RUN_ALL_TESTS();
+    }
+
+    return 0;
 }

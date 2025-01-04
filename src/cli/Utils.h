@@ -51,7 +51,7 @@ inline std::optional<Part> getPart(std::string_view part_str) {
     return std::nullopt;
 }
 
-inline std::string getTestFilter(const std::vector<std::string_view>& args) {
+inline std::optional<std::string> getTestFilter(const std::vector<std::string_view>& args) {
     std::string filter = "solution_check/DaySolverTest.Part";
     auto day_str = args_parser::get_option(args, "--day");
     auto part_str = args_parser::get_option(args, "--part");
@@ -64,11 +64,16 @@ inline std::string getTestFilter(const std::vector<std::string_view>& args) {
     }
     filter += "/";
     if (day) {
-        filter += std::to_string(*day - 1);
+        const auto day_it = std::ranges::find(available_days, *day);
+        if (day_it == available_days.end()) {
+            std::cerr << "No solver found for day " << *day << "\n";
+            return std::nullopt;
+        }
+        const auto day_idx = std::distance(available_days.begin(), day_it);
+        filter += std::to_string(day_idx);
     } else {
         filter += "*";
     }
-    std::cout << "Filter: " << filter << "\n";
     return filter;
 }
 

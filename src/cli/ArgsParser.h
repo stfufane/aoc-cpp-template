@@ -8,7 +8,7 @@ namespace adventofcode::cli::args_parser
 {
 
 inline std::string_view get_option(const std::vector<std::string_view>& args, std::string_view option_name) {
-    if (const auto it = std::ranges::find(args, option_name); it + 1 != args.end()) {
+    if (const auto it = std::ranges::find(args, option_name); it != args.end()) {
         return *(it + 1);
     }
     return "";
